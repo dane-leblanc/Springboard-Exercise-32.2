@@ -17,9 +17,17 @@ afterEach(() => {
   items.pop;
 });
 
-describe("GET /items", function () {
-  test("GET status code", async function () {
-    const res = await request(app).get("/items");
-    expect(res.statusCode).toBe(200);
-  });
+// this will return an error
+
+// describe("GET /items", function () {
+//   test("GET status code", async function () {
+//     const res = await request(app).get("/items");
+//     expect(res.statusCode).toBe(200);
+//   });
+// });
+
+// but this runs fine and passes
+test("GET status code", async function () {
+  const res = await request(app).get("/items");
+  expect(res.statusCode).toBe(200);
 });
