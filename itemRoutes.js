@@ -15,7 +15,7 @@ router.post("/", (req, res) => {
     price: req.body.price,
   };
   items.push(newItem);
-  return res.json({ added: newItem });
+  return res.status(201).json({ added: newItem });
 });
 
 router.get("/:name", (req, res) => {
@@ -38,7 +38,7 @@ router.patch("/:name", (req, res) => {
     if (itemName === items[i].name) {
       items.splice(i, 1);
       items.push(patchedItem);
-      return res.json({ updated: patchedItem });
+      return res.status(204).json({ updated: patchedItem });
     }
   }
   return res.json({ error: `${itemName} is not on your list.` });
@@ -49,7 +49,7 @@ router.delete("/:name", (req, res) => {
   for (let i = 0; i <= items.length; i++) {
     if (itemName === items[i].name) {
       items.splice(i, 1);
-      return res.json({ message: "Deleted" });
+      return res.status(204).json({ message: "Deleted" });
     }
   }
   return res.json({ error: `${itemName} is not on your list.` });
